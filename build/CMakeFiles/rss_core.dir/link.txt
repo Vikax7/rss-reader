@@ -1,2 +1,0 @@
-/usr/bin/ar qc librss_core.a CMakeFiles/rss_core.dir/core/article.cpp.o
-/usr/bin/ranlib librss_core.a

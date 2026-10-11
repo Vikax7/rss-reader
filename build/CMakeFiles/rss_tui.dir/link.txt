@@ -1,1 +1,0 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/rss_tui.dir/link.d CMakeFiles/rss_tui.dir/tui/main.cpp.o -o rss_tui  librss_core.a

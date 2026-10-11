@@ -16,6 +16,8 @@ endif()
 add_library(rss_core
     core/article.hpp
     core/article.cpp
+    core/feed.cpp 
+    core/feed.hpp 
 )
 
 # где искать заголовочные файлы ядра
@@ -28,3 +30,24 @@ add_executable(rss_tui
 
 # Подключаем ядро к исполняемому файлу
 target_link_libraries(rss_tui PRIVATE rss_core)
+
+# Подключение doctest через FetchContent
+include(FetchContent)
+FetchContent_Declare(
+    doctest
+    GIT_REPOSITORY https://github.com/doctest/doctest.git
+    GIT_TAG        v2.4.11
+)
+FetchContent_MakeAvailable(doctest)
+
+# Цель для тестов ядра
+add_executable(unit_tests
+    tests/core_test.cpp
+)
+
+# Линкуем ядро и doctest
+target_link_libraries(unit_tests PRIVATE rss_core doctest::doctest)
+
+# Включаем поддержку ctest
+enable_testing()
+add_test(NAME CoreTests COMMAND unit_tests)

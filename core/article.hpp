@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 
-namespace rss::core {
+namespace rss_reader::core {
 
 
 struct Article {
