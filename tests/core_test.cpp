@@ -76,6 +76,7 @@ TEST_CASE("RssParser successfully parses valid RSS 2.0 feed") {
         "      <title>C++20 Modules</title>"
         "      <link>https://example.com/modules</link>"
         "      <description>All about modules in C++20.</description>"
+        "     </item>"
         "  </channel>"
         "</rss>";
 

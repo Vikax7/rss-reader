@@ -211,6 +211,19 @@ unit_tests/fast:
 .PHONY : unit_tests/fast
 
 #=============================================================================
+# Target rules for targets named app_test
+
+# Build rule for target.
+app_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 app_test
+.PHONY : app_test
+
+# fast build rule for target.
+app_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app_test.dir/build.make CMakeFiles/app_test.dir/build
+.PHONY : app_test/fast
+
+#=============================================================================
 # Target rules for targets named doctest_with_main
 
 # Build rule for target.
@@ -270,6 +283,30 @@ core/feed.s: core/feed.cpp.s
 core/feed.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rss_core.dir/build.make CMakeFiles/rss_core.dir/core/feed.cpp.s
 .PHONY : core/feed.cpp.s
+
+tests/app_test.o: tests/app_test.cpp.o
+.PHONY : tests/app_test.o
+
+# target to build an object file
+tests/app_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app_test.dir/build.make CMakeFiles/app_test.dir/tests/app_test.cpp.o
+.PHONY : tests/app_test.cpp.o
+
+tests/app_test.i: tests/app_test.cpp.i
+.PHONY : tests/app_test.i
+
+# target to preprocess a source file
+tests/app_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app_test.dir/build.make CMakeFiles/app_test.dir/tests/app_test.cpp.i
+.PHONY : tests/app_test.cpp.i
+
+tests/app_test.s: tests/app_test.cpp.s
+.PHONY : tests/app_test.s
+
+# target to generate assembly for a file
+tests/app_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app_test.dir/build.make CMakeFiles/app_test.dir/tests/app_test.cpp.s
+.PHONY : tests/app_test.cpp.s
 
 tests/core_test.o: tests/core_test.cpp.o
 .PHONY : tests/core_test.o
@@ -332,6 +369,7 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... test"
+	@echo "... app_test"
 	@echo "... doctest_with_main"
 	@echo "... rss_core"
 	@echo "... rss_tui"
@@ -342,6 +380,9 @@ help:
 	@echo "... core/feed.o"
 	@echo "... core/feed.i"
 	@echo "... core/feed.s"
+	@echo "... tests/app_test.o"
+	@echo "... tests/app_test.i"
+	@echo "... tests/app_test.s"
 	@echo "... tests/core_test.o"
 	@echo "... tests/core_test.i"
 	@echo "... tests/core_test.s"

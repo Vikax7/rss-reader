@@ -1,2 +1,3 @@
-CoreTests 3 0.00526928
+CoreTests 1 0.0023114
+AppTests 1 0.00208698
 ---

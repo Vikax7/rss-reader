@@ -1,6 +1,7 @@
 /home/viktoria/oop/rss-reader/build/CMakeFiles/rss_core.dir
 /home/viktoria/oop/rss-reader/build/CMakeFiles/rss_tui.dir
 /home/viktoria/oop/rss-reader/build/CMakeFiles/unit_tests.dir
+/home/viktoria/oop/rss-reader/build/CMakeFiles/app_test.dir
 /home/viktoria/oop/rss-reader/build/CMakeFiles/test.dir
 /home/viktoria/oop/rss-reader/build/CMakeFiles/edit_cache.dir
 /home/viktoria/oop/rss-reader/build/CMakeFiles/rebuild_cache.dir

@@ -300,4 +300,6 @@ CMakeFiles/unit_tests.dir/tests/core_test.cpp.o: \
  /usr/include/c++/15/bits/ranges_uninitialized.h \
  /usr/include/c++/15/pstl/glue_memory_defs.h \
  /home/viktoria/oop/rss-reader/core/atom_parser.hpp \
+ /usr/include/pugixml.hpp /usr/include/pugiconfig.hpp \
+ /usr/include/c++/15/iterator /usr/include/c++/15/bits/stream_iterator.h \
  /home/viktoria/oop/rss-reader/core/rss_parser.hpp

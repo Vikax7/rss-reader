@@ -21,6 +21,10 @@ namespace rss_reader::core {
         return articles_;
     }
 
+    void Feed::set_url(const std::string& url) {
+        url_ = url;
+    }
+
     void Feed::set_etag(const std::string& etag) {
         etag_ = etag;
     }

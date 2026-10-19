@@ -1,24 +1,45 @@
-Start testing: Oct 19 16:44 +07
+Start testing: Oct 19 19:00 +07
 ----------------------------------------------------------
-1/1 Testing: CoreTests
-1/1 Test: CoreTests
+1/2 Testing: CoreTests
+1/2 Test: CoreTests
 Command: "/home/viktoria/oop/rss-reader/build/unit_tests"
 Directory: /home/viktoria/oop/rss-reader/build
-"CoreTests" start time: Oct 19 16:44 +07
+"CoreTests" start time: Oct 19 19:00 +07
 Output:
 ----------------------------------------------------------
 [doctest] doctest version is "2.4.11"
 [doctest] run with "--help" for options
 ===============================================================================
-[doctest] test cases:  3 |  3 passed | 0 failed | 0 skipped
-[doctest] assertions: 18 | 18 passed | 0 failed |
+[doctest] test cases:  5 |  5 passed | 0 failed | 0 skipped
+[doctest] assertions: 29 | 29 passed | 0 failed |
 [doctest] Status: SUCCESS!
 <end of output>
-Test time =   0.02 sec
+Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"CoreTests" end time: Oct 19 16:44 +07
+"CoreTests" end time: Oct 19 19:00 +07
 "CoreTests" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Oct 19 16:44 +07
+2/2 Testing: AppTests
+2/2 Test: AppTests
+Command: "/home/viktoria/oop/rss-reader/build/app_test"
+Directory: /home/viktoria/oop/rss-reader/build
+"AppTests" start time: Oct 19 19:00 +07
+Output:
+----------------------------------------------------------
+[doctest] doctest version is "2.4.11"
+[doctest] run with "--help" for options
+===============================================================================
+[doctest] test cases:  1 |  1 passed | 0 failed | 0 skipped
+[doctest] assertions: 13 | 13 passed | 0 failed |
+[doctest] Status: SUCCESS!
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"AppTests" end time: Oct 19 19:00 +07
+"AppTests" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Oct 19 19:00 +07

@@ -17,6 +17,8 @@ namespace rss_reader::core {
         [[nodiscard]] const std::string& get_title() const noexcept;
         [[nodiscard]] const std::vector<Article>& get_articles() const noexcept;
 
+        void set_url(const std::string& url);
+
         void set_etag(const std::string& etag);
         void set_last_modified(const std::string& last_modified);
 

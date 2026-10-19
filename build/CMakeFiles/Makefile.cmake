@@ -66,5 +66,6 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/rss_core.dir/DependInfo.cmake"
   "CMakeFiles/rss_tui.dir/DependInfo.cmake"
   "CMakeFiles/unit_tests.dir/DependInfo.cmake"
+  "CMakeFiles/app_test.dir/DependInfo.cmake"
   "_deps/doctest-build/CMakeFiles/doctest_with_main.dir/DependInfo.cmake"
   )
