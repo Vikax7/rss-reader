@@ -4,13 +4,12 @@
 #include <stdexcept>
 #include <vector>
 
-namespace rss_reader::network {
+namespace rss_reader::app {
 
 class HttpClient {
 public:
     HttpClient() {
-        // Инициализация libcurl глобально (лучше делать один раз при старте программы, 
-        // но для простоты можно и в конструкторе, если он создается единожды)
+        // Инициализация libcurl
         curl_global_init(CURL_GLOBAL_DEFAULT);
     }
 
@@ -21,6 +20,7 @@ public:
     // Запрещаем копирование во избежание двойного освобождения ресурсов curl
     HttpClient(const HttpClient&) = delete;
     HttpClient& operator=(const HttpClient&) = delete;
+    //конструктор перемещения
     HttpClient(HttpClient&&) noexcept = default;
     HttpClient& operator=(HttpClient&&) noexcept = default;
 
@@ -117,4 +117,4 @@ private:
     }
 };
 
-} // namespace rss_reader::network
+} 
