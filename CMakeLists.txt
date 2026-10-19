@@ -18,6 +18,10 @@ add_library(rss_core
     core/article.cpp
     core/feed.cpp 
     core/feed.hpp 
+    core/atom_parser.hpp
+    core/feed_parser_factory.hpp
+    core/feed_parser.hpp
+    core/rss_parser.hpp
 )
 
 # где искать заголовочные файлы ядра
@@ -51,3 +55,5 @@ target_link_libraries(unit_tests PRIVATE rss_core doctest::doctest)
 # Включаем поддержку ctest
 enable_testing()
 add_test(NAME CoreTests COMMAND unit_tests)
+
+target_link_libraries(rss_core PUBLIC pugixml)

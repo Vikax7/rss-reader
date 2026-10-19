@@ -1,0 +1,8 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/viktoria/oop/rss-reader/build/cmake_install.cmake",
+		"/home/viktoria/oop/rss-reader/build/_deps/doctest-build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

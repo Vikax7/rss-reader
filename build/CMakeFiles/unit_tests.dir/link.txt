@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/unit_tests.dir/link.d CMakeFiles/unit_tests.dir/tests/core_test.cpp.o -o unit_tests  librss_core.a -lpugixml

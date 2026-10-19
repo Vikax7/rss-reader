@@ -1,0 +1,24 @@
+Start testing: Oct 19 16:44 +07
+----------------------------------------------------------
+1/1 Testing: CoreTests
+1/1 Test: CoreTests
+Command: "/home/viktoria/oop/rss-reader/build/unit_tests"
+Directory: /home/viktoria/oop/rss-reader/build
+"CoreTests" start time: Oct 19 16:44 +07
+Output:
+----------------------------------------------------------
+[doctest] doctest version is "2.4.11"
+[doctest] run with "--help" for options
+===============================================================================
+[doctest] test cases:  3 |  3 passed | 0 failed | 0 skipped
+[doctest] assertions: 18 | 18 passed | 0 failed |
+[doctest] Status: SUCCESS!
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"CoreTests" end time: Oct 19 16:44 +07
+"CoreTests" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Oct 19 16:44 +07
