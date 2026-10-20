@@ -10,7 +10,8 @@ namespace rss_reader::tui {
 
     enum class ScreenState {
         FeedsList, // состояние со списком лент
-        ArticlesList // состояние со список внутри конкретной ленты
+        ArticlesList, // состояние со список внутри конкретной ленты
+        ArticleView //состояние просмотра конкретной стати
     };
 
     class RssReaderApp {
@@ -51,8 +52,36 @@ namespace rss_reader::tui {
                 // индекс выбранной пользователем статьи внутри конкретной ленты
                 int selected_article = 0;
 
+                //состояние поиска
+                bool is_searching = false;
+                std::string search_query = "";  
+
                 //локальный кэш объекта Feed который пользователь выбрал на первом экране
                 core::Feed current_feed_cache;
+                //кэш статьи
+                core::RenderedArticle current_article_cache;
+
+                // Вспомогательная функция для перевода строки в нижний регистр (для нечувствительного к регистру поиска)
+                auto to_lower = [](std::string s) {
+                    std::transform(s.begin(), s.end(), s.begin(), [](unsigned char c) { return std::tolower(c); });
+                    return s;
+                };
+
+                // Получение отфильтрованного списка статей
+                auto get_filtered_articles = [&]() {
+                    const auto& all_articles = current_feed_cache.get_articles();
+                    if (search_query.empty()) {
+                        return all_articles;
+                    }
+                    std::vector<core::Article> filtered;
+                    std::string query_lower = to_lower(search_query);
+                    for (const auto& article : all_articles) {
+                        if (to_lower(article.title).find(query_lower) != std::string::npos) {
+                            filtered.push_back(article);
+                        }
+                    }
+                    return filtered;
+                };
 
                 //отрисовываем список лент
                 auto feeds_renderer = Renderer([&] {
@@ -81,7 +110,7 @@ namespace rss_reader::tui {
 
                 // обработка статей выбранной ленты
                 auto articles_renderer = Renderer([&] {
-                    const auto& articles = current_feed_cache.get_articles();
+                    auto articles = get_filtered_articles();
                     
                     Elements article_elements;
                     if (articles.empty()) {
@@ -93,28 +122,97 @@ namespace rss_reader::tui {
                         }
                     }
 
-                    return window(text(" RSS Reader (" + current_feed_cache.get_title() + ") "),
-                                vbox({
-                                    text("Articles:") | bold,
-                                    separator(),
-                                    vbox(article_elements),
-                                    separator(),
-                                    text("Controls: [Up/Down] Navigate | [Esc] Back to Feeds | [q] Quit") | dim,
-                                }));
+                    Elements layout_elements;
+                    layout_elements.push_back(text("Articles:") | bold);
+                    layout_elements.push_back(separator());
+
+                    // Если активен режим поиска, показываем поисковую строку
+                    if (is_searching) {
+                        layout_elements.push_back(text("Search: " + search_query + "_") | color(Color::Yellow));
+                        layout_elements.push_back(separator());
+                    } else if (!search_query.empty()) {
+                        layout_elements.push_back(text("Filter: " + search_query + " (Press '/' to edit, Esc to clear)") | dim);
+                        layout_elements.push_back(separator());
+                    }
+
+                    layout_elements.push_back(vbox(article_elements));
+                    layout_elements.push_back(separator());
+                    layout_elements.push_back(text("Controls: [/] Search | [Up/Down] Navigate | [Enter] Read | [Esc] Back | [q] Quit") | dim);
+
+                    return window(text(" RSS Reader (" + current_feed_cache.get_title() + ") "), vbox(layout_elements));
+                });
+
+                //Рендерер экрана чтения статьи (с обработкой HtmlRenderer)
+                auto article_view_renderer = Renderer([&] {
+                    return window(text(" Article Viewer "),
+                            vbox({
+                                text(current_article_cache.text) | yframe,
+                                separator(),
+                                text("Controls: [Esc] Back to Articles | [q] Quit") | dim,
+                            }));
                 });
 
                 auto renderer = Renderer([&] {
                     if (current_screen == ScreenState::FeedsList) {
                         return feeds_renderer->Render();
-                    } else {
+                    } else if (current_screen == ScreenState::ArticlesList) {
                         return articles_renderer->Render();
+                    } else {
+                        return article_view_renderer->Render();
                     }
                 });
 
                 // Обработка нажатий клавиш
                 auto component = CatchEvent(renderer, [&](Event event) {
-                    if (event == Event::Character('q') || event == Event::Escape) {
-                        if (current_screen == ScreenState::ArticlesList) {
+                    // Если мы в режиме ввода поискового запроса
+                    if (is_searching) {
+                        if (event == Event::Return) {
+                            is_searching = false;
+                            return true;
+                        }
+                        if (event == Event::Escape) {
+                            is_searching = false;
+                            search_query.clear();
+                            selected_article = 0;
+                            return true;
+                        }
+                        if (event == Event::Backspace) {
+                            if (!search_query.empty()) {
+                                search_query.pop_back();
+                                selected_article = 0;
+                            }
+                            return true;
+                        }
+                        if (event.is_character()) {
+                            search_query += event.character();
+                            selected_article = 0;
+                            return true;
+                        }
+                        return false;
+                    }
+
+                    if (event == Event::Character('q')) {
+                        screen.Exit();
+                        return true;
+                    }
+
+                    // Включение режима поиска по нажатию '/'
+                    if (event == Event::Character('/') && current_screen == ScreenState::ArticlesList) {
+                        is_searching = true;
+                        return true;
+                    }
+
+                    // Обработка клавиши ESC в зависимости от экрана
+                    if (event == Event::Escape) {
+                        if (current_screen == ScreenState::ArticleView) {
+                            current_screen = ScreenState::ArticlesList;
+                            return true;
+                        } else if (current_screen == ScreenState::ArticlesList) {
+                            if (!search_query.empty()) {
+                                search_query.clear();
+                                selected_article = 0;
+                                return true;
+                            }
                             current_screen = ScreenState::FeedsList;
                             return true;
                         } else {
@@ -138,12 +236,13 @@ namespace rss_reader::tui {
                             if (event == Event::Return) {
                                 current_feed_cache = feeds[selected_feed];
                                 selected_article = 0;
+                                search_query.clear();
                                 current_screen = ScreenState::ArticlesList;
                                 return true;
                             }
                         }
                     } else if (current_screen == ScreenState::ArticlesList) {
-                        const auto& articles = current_feed_cache.get_articles();
+                        auto articles = get_filtered_articles();
                         if (!articles.empty()) {
                             if (event == Event::ArrowUp && selected_article > 0) {
                                 selected_article--;
@@ -151,6 +250,13 @@ namespace rss_reader::tui {
                             }
                             if (event == Event::ArrowDown && selected_article < static_cast<int>(articles.size()) - 1) {
                                 selected_article++;
+                                return true;
+                            }
+                            if (event == Event::Return) {
+                                // Переходим к чтению статьи, обрабатываем HTML через HtmlRenderer
+                                const auto& article = articles[selected_article];
+                                current_article_cache = core::HtmlRenderer::render(article.content);
+                                current_screen = ScreenState::ArticleView;
                                 return true;
                             }
                         }
