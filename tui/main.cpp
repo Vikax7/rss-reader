@@ -1,11 +1,12 @@
-#include <iostream>
-#include "core/article.hpp"
+#include "app_tui.hpp" 
 
 int main() {
-    rss_reader::core::Article test_article{"Заголовок статьи", "https://example.com", "Текст статьи"};
-    
-    std::cout << "RSS Reader запущен!" << std::endl;
-    std::cout << "Тестовая статья: " << test_article.title << std::endl;
-    
+    try {
+        rss_reader::tui::RssReaderApp app;
+        app.run();
+    } catch (const std::exception& e) {
+        // Защита от непредвиденных исключений на верхнем уровне
+        return 1;
+    }
     return 0;
 }
