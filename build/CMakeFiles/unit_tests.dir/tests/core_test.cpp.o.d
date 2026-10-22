@@ -302,4 +302,8 @@ CMakeFiles/unit_tests.dir/tests/core_test.cpp.o: \
  /home/viktoria/oop/rss-reader/core/atom_parser.hpp \
  /usr/include/pugixml.hpp /usr/include/pugiconfig.hpp \
  /usr/include/c++/15/iterator /usr/include/c++/15/bits/stream_iterator.h \
- /home/viktoria/oop/rss-reader/core/rss_parser.hpp
+ /home/viktoria/oop/rss-reader/core/rss_parser.hpp \
+ /home/viktoria/oop/rss-reader/core/html_renderer.hpp \
+ /usr/include/c++/15/functional /usr/include/c++/15/bits/std_function.h \
+ /usr/include/c++/15/unordered_map \
+ /usr/include/c++/15/bits/unordered_map.h /usr/include/c++/15/array

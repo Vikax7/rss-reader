@@ -1,1 +1,1 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/app_test.dir/link.d CMakeFiles/app_test.dir/tests/app_test.cpp.o -o app_test  librss_core.a -lpugixml
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/app_test.dir/link.d CMakeFiles/app_test.dir/tests/app_test.cpp.o -o app_test  librss_core.a -lpugixml /usr/lib/x86_64-linux-gnu/libcurl.so /usr/lib/x86_64-linux-gnu/libcurl.so

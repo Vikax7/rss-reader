@@ -1,0 +1,14 @@
+# Target labels
+ doctest-populate
+# Source files and their labels
+/home/viktoria/oop/rss-reader/_deps/doctest-subbuild/CMakeFiles/doctest-populate
+/home/viktoria/oop/rss-reader/_deps/doctest-subbuild/CMakeFiles/doctest-populate.rule
+/home/viktoria/oop/rss-reader/_deps/doctest-subbuild/CMakeFiles/doctest-populate-complete.rule
+/home/viktoria/oop/rss-reader/_deps/doctest-subbuild/doctest-populate-prefix/src/doctest-populate-stamp/doctest-populate-build.rule
+/home/viktoria/oop/rss-reader/_deps/doctest-subbuild/doctest-populate-prefix/src/doctest-populate-stamp/doctest-populate-configure.rule
+/home/viktoria/oop/rss-reader/_deps/doctest-subbuild/doctest-populate-prefix/src/doctest-populate-stamp/doctest-populate-download.rule
+/home/viktoria/oop/rss-reader/_deps/doctest-subbuild/doctest-populate-prefix/src/doctest-populate-stamp/doctest-populate-install.rule
+/home/viktoria/oop/rss-reader/_deps/doctest-subbuild/doctest-populate-prefix/src/doctest-populate-stamp/doctest-populate-mkdir.rule
+/home/viktoria/oop/rss-reader/_deps/doctest-subbuild/doctest-populate-prefix/src/doctest-populate-stamp/doctest-populate-patch.rule
+/home/viktoria/oop/rss-reader/_deps/doctest-subbuild/doctest-populate-prefix/src/doctest-populate-stamp/doctest-populate-test.rule
+/home/viktoria/oop/rss-reader/_deps/doctest-subbuild/doctest-populate-prefix/src/doctest-populate-stamp/doctest-populate-update.rule

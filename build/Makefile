@@ -65,6 +65,26 @@ CMAKE_BINARY_DIR = /home/viktoria/oop/rss-reader/build
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target package
+package: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool..."
+	/usr/bin/cpack --config ./CPackConfig.cmake
+.PHONY : package
+
+# Special rule for the target package
+package/fast: package
+.PHONY : package/fast
+
+# Special rule for the target package_source
+package_source:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool for source..."
+	/usr/bin/cpack --config ./CPackSourceConfig.cmake
+.PHONY : package_source
+
+# Special rule for the target package_source
+package_source/fast: package_source
+.PHONY : package_source/fast
+
 # Special rule for the target test
 test:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running tests..."
@@ -224,6 +244,45 @@ app_test/fast:
 .PHONY : app_test/fast
 
 #=============================================================================
+# Target rules for targets named screen
+
+# Build rule for target.
+screen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 screen
+.PHONY : screen
+
+# fast build rule for target.
+screen/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/ftxui-build/CMakeFiles/screen.dir/build.make _deps/ftxui-build/CMakeFiles/screen.dir/build
+.PHONY : screen/fast
+
+#=============================================================================
+# Target rules for targets named dom
+
+# Build rule for target.
+dom: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dom
+.PHONY : dom
+
+# fast build rule for target.
+dom/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/ftxui-build/CMakeFiles/dom.dir/build.make _deps/ftxui-build/CMakeFiles/dom.dir/build
+.PHONY : dom/fast
+
+#=============================================================================
+# Target rules for targets named component
+
+# Build rule for target.
+component: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 component
+.PHONY : component
+
+# fast build rule for target.
+component/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/ftxui-build/CMakeFiles/component.dir/build.make _deps/ftxui-build/CMakeFiles/component.dir/build
+.PHONY : component/fast
+
+#=============================================================================
 # Target rules for targets named doctest_with_main
 
 # Build rule for target.
@@ -235,30 +294,6 @@ doctest_with_main: cmake_check_build_system
 doctest_with_main/fast:
 	$(MAKE) $(MAKESILENT) -f _deps/doctest-build/CMakeFiles/doctest_with_main.dir/build.make _deps/doctest-build/CMakeFiles/doctest_with_main.dir/build
 .PHONY : doctest_with_main/fast
-
-core/article.o: core/article.cpp.o
-.PHONY : core/article.o
-
-# target to build an object file
-core/article.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rss_core.dir/build.make CMakeFiles/rss_core.dir/core/article.cpp.o
-.PHONY : core/article.cpp.o
-
-core/article.i: core/article.cpp.i
-.PHONY : core/article.i
-
-# target to preprocess a source file
-core/article.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rss_core.dir/build.make CMakeFiles/rss_core.dir/core/article.cpp.i
-.PHONY : core/article.cpp.i
-
-core/article.s: core/article.cpp.s
-.PHONY : core/article.s
-
-# target to generate assembly for a file
-core/article.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rss_core.dir/build.make CMakeFiles/rss_core.dir/core/article.cpp.s
-.PHONY : core/article.cpp.s
 
 core/feed.o: core/feed.cpp.o
 .PHONY : core/feed.o
@@ -367,16 +402,18 @@ help:
 	@echo "... install/local"
 	@echo "... install/strip"
 	@echo "... list_install_components"
+	@echo "... package"
+	@echo "... package_source"
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... app_test"
+	@echo "... component"
 	@echo "... doctest_with_main"
+	@echo "... dom"
 	@echo "... rss_core"
 	@echo "... rss_tui"
+	@echo "... screen"
 	@echo "... unit_tests"
-	@echo "... core/article.o"
-	@echo "... core/article.i"
-	@echo "... core/article.s"
 	@echo "... core/feed.o"
 	@echo "... core/feed.i"
 	@echo "... core/feed.s"

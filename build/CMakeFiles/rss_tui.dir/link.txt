@@ -1,1 +1,1 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/rss_tui.dir/link.d CMakeFiles/rss_tui.dir/tui/main.cpp.o -o rss_tui  librss_core.a -lpugixml
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/rss_tui.dir/link.d CMakeFiles/rss_tui.dir/tui/main.cpp.o -o rss_tui  librss_core.a _deps/ftxui-build/libftxui-screen.a _deps/ftxui-build/libftxui-dom.a _deps/ftxui-build/libftxui-component.a -lpugixml /usr/lib/x86_64-linux-gnu/libcurl.so /usr/lib/x86_64-linux-gnu/libcurl.so _deps/ftxui-build/libftxui-dom.a _deps/ftxui-build/libftxui-screen.a

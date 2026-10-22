@@ -8,7 +8,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/viktoria/oop/rss-reader/core/article.cpp" "CMakeFiles/rss_core.dir/core/article.cpp.o" "gcc" "CMakeFiles/rss_core.dir/core/article.cpp.o.d"
   "/home/viktoria/oop/rss-reader/core/feed.cpp" "CMakeFiles/rss_core.dir/core/feed.cpp.o" "gcc" "CMakeFiles/rss_core.dir/core/feed.cpp.o.d"
   )
 

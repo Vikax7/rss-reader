@@ -17,7 +17,13 @@ namespace rss_reader::core {
         return title_;
     }
 
+    // константная версия
     const std::vector<Article>& Feed::get_articles() const noexcept {
+        return articles_;
+    }
+
+    // неконстантная версия
+    std::vector<Article>& Feed::get_articles() noexcept {
         return articles_;
     }
 

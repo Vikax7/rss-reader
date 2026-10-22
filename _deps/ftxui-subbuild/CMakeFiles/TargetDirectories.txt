@@ -1,0 +1,3 @@
+/home/viktoria/oop/rss-reader/_deps/ftxui-subbuild/CMakeFiles/ftxui-populate.dir
+/home/viktoria/oop/rss-reader/_deps/ftxui-subbuild/CMakeFiles/edit_cache.dir
+/home/viktoria/oop/rss-reader/_deps/ftxui-subbuild/CMakeFiles/rebuild_cache.dir

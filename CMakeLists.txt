@@ -12,10 +12,12 @@ else()
     add_compile_options(-Wall -Wextra -Werror)
 endif()
 
-# 1. Библиотека ЯДРА и СЛОЯ ПРИЛОЖЕНИЯ 
+# Ищем системную библиотеку libcurl для сетевых запросов (HttpClient)
+find_package(CURL REQUIRED)
+
+# 1. Библиотека ядра и слоя приложения
 add_library(rss_core
     core/article.hpp
-    core/article.cpp
     core/feed.cpp 
     core/feed.hpp 
     core/atom_parser.hpp
@@ -23,24 +25,40 @@ add_library(rss_core
     core/feed_parser.hpp
     core/rss_parser.hpp
     app/feed_manager.hpp
+    app/http_client.hpp
+    app/http_response.hpp
+    core/html_renderer.hpp
 )
 
 # Где искать заголовочные файлы ядра и приложения
 target_include_directories(rss_core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
-# Подключаем pugixml (предполагается, что она найдена через find_package или FetchContent)
-target_link_libraries(rss_core PUBLIC pugixml)
+# Подключаем pugixml и curl к ядру
+target_link_libraries(rss_core PUBLIC pugixml CURL::libcurl)
+
+# Подключение FTXUI через FetchContent 
+include(FetchContent)
+FetchContent_Declare(
+    ftxui
+    GIT_REPOSITORY https://github.com/ArthurSonzogni/FTXUI.git
+    GIT_TAG        v5.0.0
+)
+FetchContent_MakeAvailable(ftxui)
 
 # 2. Исполняемый файл TUI-приложения
 add_executable(rss_tui
     tui/main.cpp
 )
 
-# Подключаем ядро к исполняемому файлу
-target_link_libraries(rss_tui PRIVATE rss_core)
+# Подключаем ядро и компоненты FTXUI к исполняемому файлу
+target_link_libraries(rss_tui PRIVATE 
+    rss_core 
+    ftxui::screen 
+    ftxui::dom 
+    ftxui::component
+)
 
 # 3. Подключение doctest через FetchContent
-include(FetchContent)
 FetchContent_Declare(
     doctest
     GIT_REPOSITORY https://github.com/doctest/doctest.git
@@ -58,7 +76,6 @@ target_link_libraries(unit_tests PRIVATE rss_core doctest::doctest)
 add_executable(app_test
     tests/app_test.cpp
 )
-# Линкуем ровно ту цель, которая у нас создана (rss_core, а не rss_reader_core/app)
 target_link_libraries(app_test PRIVATE 
     rss_core    
     doctest::doctest

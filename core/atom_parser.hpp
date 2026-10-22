@@ -3,6 +3,7 @@
 #include <pugixml.hpp>
 #include <stdexcept>
 #include <string>
+#include <sstream>
 
 namespace rss_reader::core {
 
@@ -43,8 +44,18 @@ namespace rss_reader::core {
                 }
 
                 //Содержание может быть в <content> или <summary>
-                article.content = entry_node.child_value("content");
-                if (article.content.empty()) article.content = entry_node.child_value("summary");
+                for (const char* name : {"content", "summary"}) {
+                    auto content = entry_node.child(name);
+                    if (std::string(content.attribute("type").value()) == "xhtml") {
+                        // Встроенную XHTML-разметку передаём рендереру целиком.
+                        std::ostringstream html;
+                        for (auto child : content.children()) child.print(html, "", pugi::format_raw);
+                        article.content = html.str();
+                    } else {
+                        article.content = content.child_value();
+                    }
+                    if (!article.content.empty()) break;
+                }
 
                 feed.add_article(article);
             }

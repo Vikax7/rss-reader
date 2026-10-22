@@ -14,6 +14,9 @@
 # EXTERNAL cache entries
 ########################
 
+//Path to clang-tidy executable
+CLANG_TIDY_EXE:FILEPATH=CLANG_TIDY_EXE-NOTFOUND
+
 //Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=/usr/bin/addr2line
 
@@ -182,16 +185,16 @@ CMAKE_PROJECT_NAME:STATIC=rss_reader
 CMAKE_PROJECT_SPDX_LICENSE:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_VERSION:STATIC=2.4.11
+CMAKE_PROJECT_VERSION:STATIC=5.0.0
 
 //Value Computed by CMake
-CMAKE_PROJECT_VERSION_MAJOR:STATIC=2
+CMAKE_PROJECT_VERSION_MAJOR:STATIC=5
 
 //Value Computed by CMake
-CMAKE_PROJECT_VERSION_MINOR:STATIC=4
+CMAKE_PROJECT_VERSION_MINOR:STATIC=0
 
 //Value Computed by CMake
-CMAKE_PROJECT_VERSION_PATCH:STATIC=11
+CMAKE_PROJECT_VERSION_PATCH:STATIC=0
 
 //Value Computed by CMake
 CMAKE_PROJECT_VERSION_TWEAK:STATIC=
@@ -261,6 +264,36 @@ CMAKE_TAPI:FILEPATH=CMAKE_TAPI-NOTFOUND
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
+//Enable to build RPM source packages
+CPACK_SOURCE_RPM:BOOL=OFF
+
+//Enable to build TBZ2 source packages
+CPACK_SOURCE_TBZ2:BOOL=ON
+
+//Enable to build TGZ source packages
+CPACK_SOURCE_TGZ:BOOL=ON
+
+//Enable to build TXZ source packages
+CPACK_SOURCE_TXZ:BOOL=ON
+
+//Enable to build TZ source packages
+CPACK_SOURCE_TZ:BOOL=ON
+
+//Enable to build ZIP source packages
+CPACK_SOURCE_ZIP:BOOL=OFF
+
+//The directory containing a CMake configuration file for CURL.
+CURL_DIR:PATH=CURL_DIR-NOTFOUND
+
+//Path to a file.
+CURL_INCLUDE_DIR:PATH=/usr/include/x86_64-linux-gnu
+
+//Path to a library.
+CURL_LIBRARY_DEBUG:FILEPATH=CURL_LIBRARY_DEBUG-NOTFOUND
+
+//Path to a library.
+CURL_LIBRARY_RELEASE:FILEPATH=/usr/lib/x86_64-linux-gnu/libcurl.so
+
 //Skip the installation process
 DOCTEST_NO_INSTALL:BOOL=OFF
 
@@ -287,14 +320,59 @@ FETCHCONTENT_QUIET:BOOL=ON
 // for doctest
 FETCHCONTENT_SOURCE_DIR_DOCTEST:PATH=
 
+//When not empty, overrides where to find pre-populated content
+// for ftxui
+FETCHCONTENT_SOURCE_DIR_FTXUI:PATH=
+
 //Enables UPDATE_DISCONNECTED behavior for all content population
 FETCHCONTENT_UPDATES_DISCONNECTED:BOOL=OFF
 
 //Enables UPDATE_DISCONNECTED behavior just for population of doctest
 FETCHCONTENT_UPDATES_DISCONNECTED_DOCTEST:BOOL=OFF
 
+//Enables UPDATE_DISCONNECTED behavior just for population of ftxui
+FETCHCONTENT_UPDATES_DISCONNECTED_FTXUI:BOOL=OFF
+
+//Set to ON to build docs
+FTXUI_BUILD_DOCS:BOOL=OFF
+
+//Set to ON to build examples
+FTXUI_BUILD_EXAMPLES:BOOL=OFF
+
+//Set to ON to build tests
+FTXUI_BUILD_TESTS:BOOL=OFF
+
+//Set to ON to enable fuzzing
+FTXUI_BUILD_TESTS_FUZZER:BOOL=OFF
+
+//Execute clang-tidy
+FTXUI_CLANG_TIDY:BOOL=OFF
+
+//Enable more compiler warnings and warnings as errors
+FTXUI_DEV_WARNINGS:BOOL=OFF
+
+//Execute code coverage
+FTXUI_ENABLE_COVERAGE:BOOL=OFF
+
+//Generate the install target
+FTXUI_ENABLE_INSTALL:BOOL=ON
+
+//On windows, assume the terminal used will be one of Microsoft
+// and use a set of reasonnable fallback to counteract its implementations
+// problems.
+FTXUI_MICROSOFT_TERMINAL_FALLBACK:BOOL=OFF
+
+//Set to ON for FTXUI to be quiet
+FTXUI_QUIET:BOOL=OFF
+
 //Git command line client
 GIT_EXECUTABLE:FILEPATH=/usr/bin/git
+
+//Arguments to supply to pkg-config
+PKG_CONFIG_ARGN:STRING=
+
+//pkg-config executable
+PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/pkg-config
 
 //Value Computed by CMake
 doctest_BINARY_DIR:STATIC=/home/viktoria/oop/rss-reader/build/_deps/doctest-build
@@ -304,6 +382,21 @@ doctest_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
 doctest_SOURCE_DIR:STATIC=/home/viktoria/oop/rss-reader/build/_deps/doctest-src
+
+//Value Computed by CMake
+ftxui_BINARY_DIR:STATIC=/home/viktoria/oop/rss-reader/build/_deps/ftxui-build
+
+//Value Computed by CMake
+ftxui_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+ftxui_SOURCE_DIR:STATIC=/home/viktoria/oop/rss-reader/build/_deps/ftxui-src
+
+//Path to a program.
+iwyu_path:FILEPATH=iwyu_path-NOTFOUND
+
+//Path to a library.
+pkgcfg_lib_PC_CURL_curl:FILEPATH=/usr/lib/x86_64-linux-gnu/libcurl.so
 
 //Value Computed by CMake
 rss_reader_BINARY_DIR:STATIC=/home/viktoria/oop/rss-reader/build
@@ -381,6 +474,8 @@ CMAKE_GENERATOR_INSTANCE:INTERNAL=
 CMAKE_GENERATOR_PLATFORM:INTERNAL=
 //Name of generator toolset.
 CMAKE_GENERATOR_TOOLSET:INTERNAL=
+//Test CMAKE_HAVE_LIBC_PTHREAD
+CMAKE_HAVE_LIBC_PTHREAD:INTERNAL=1
 //Source directory with the top level CMakeLists.txt file for this
 // project
 CMAKE_HOME_DIRECTORY:INTERNAL=/home/viktoria/oop/rss-reader
@@ -437,7 +532,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=2
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=5
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -482,8 +577,76 @@ CMAKE_TAPI-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CPACK_SOURCE_RPM
+CPACK_SOURCE_RPM-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CPACK_SOURCE_TBZ2
+CPACK_SOURCE_TBZ2-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CPACK_SOURCE_TGZ
+CPACK_SOURCE_TGZ-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CPACK_SOURCE_TXZ
+CPACK_SOURCE_TXZ-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CPACK_SOURCE_TZ
+CPACK_SOURCE_TZ-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CPACK_SOURCE_ZIP
+CPACK_SOURCE_ZIP-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CURL_DIR
+CURL_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CURL_INCLUDE_DIR
+CURL_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CURL_LIBRARY_DEBUG
+CURL_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CURL_LIBRARY_RELEASE
+CURL_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//Details about finding CURL
+FIND_PACKAGE_MESSAGE_DETAILS_CURL:INTERNAL=[/usr/lib/x86_64-linux-gnu/libcurl.so][/usr/include/x86_64-linux-gnu][ ][v8.18.0()]
+//Details about finding Threads
+FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
 //ADVANCED property for variable: GIT_EXECUTABLE
 GIT_EXECUTABLE-ADVANCED:INTERNAL=1
+PC_CURL_CFLAGS:INTERNAL=-I/usr/include/x86_64-linux-gnu;-I/usr/include;-isystem;/usr/include/mit-krb5;-isystem;/usr/include/mit-krb5;-I/usr/include/p11-kit-1
+PC_CURL_CFLAGS_I:INTERNAL=
+PC_CURL_CFLAGS_OTHER:INTERNAL=
+PC_CURL_FOUND:INTERNAL=1
+PC_CURL_INCLUDEDIR:INTERNAL=/usr/include/x86_64-linux-gnu
+PC_CURL_INCLUDE_DIRS:INTERNAL=/usr/include/x86_64-linux-gnu;/usr/include;/usr/include/p11-kit-1;/usr/include/mit-krb5;/usr/include/mit-krb5
+PC_CURL_LDFLAGS:INTERNAL=-L/usr/lib/x86_64-linux-gnu;-lcurl
+PC_CURL_LDFLAGS_OTHER:INTERNAL=
+PC_CURL_LIBDIR:INTERNAL=/usr/lib/x86_64-linux-gnu
+PC_CURL_LIBRARIES:INTERNAL=curl
+PC_CURL_LIBRARY_DIRS:INTERNAL=/usr/lib/x86_64-linux-gnu
+PC_CURL_LIBS:INTERNAL=
+PC_CURL_LIBS_L:INTERNAL=
+PC_CURL_LIBS_OTHER:INTERNAL=
+PC_CURL_LIBS_PATHS:INTERNAL=
+PC_CURL_MODULE_NAME:INTERNAL=libcurl
+PC_CURL_PREFIX:INTERNAL=/usr
+PC_CURL_STATIC_CFLAGS:INTERNAL=-I/usr/include/x86_64-linux-gnu;-I/usr/include;-isystem;/usr/include/mit-krb5;-isystem;/usr/include/mit-krb5;-I/usr/include/p11-kit-1;-DCURL_STATICLIB
+PC_CURL_STATIC_CFLAGS_I:INTERNAL=
+PC_CURL_STATIC_CFLAGS_OTHER:INTERNAL=-isystem;/usr/include/mit-krb5;-isystem;/usr/include/mit-krb5;-DCURL_STATICLIB
+PC_CURL_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include/x86_64-linux-gnu;/usr/include;/usr/include/p11-kit-1
+PC_CURL_STATIC_LDFLAGS:INTERNAL=-L/usr/lib/x86_64-linux-gnu;-lcurl;-llber;-lldap;-llber;-lssh2;-lssl;-lcrypto;-lcrypto;-lz;-lbrotlidec;-lbrotlicommon;-lzstd;-pthread;-L/usr/lib/x86_64-linux-gnu/mit-krb5;-lgssapi_krb5;-lkrb5;-lk5crypto;-lcom_err;-lkrb5support;-lssl;-lpsl;-lssh2;-L/usr/lib/x86_64-linux-gnu;-lssl;-L/usr/lib/x86_64-linux-gnu;-L/usr/lib/x86_64-linux-gnu;-lz;-lgpg-error;-lcrypto;-l:libjitterentropy.a;-lzstd;-ldl;-pthread;-lz;-lrtmp;-lz;-lgmp;-lgnutls;-lgmp;-lunistring;-latomic;-ltasn1;-lidn2;-L/usr/lib/x86_64-linux-gnu;-lunistring;-lp11-kit;-lhogweed;-lgmp;-lnettle;-lnghttp2
+PC_CURL_STATIC_LDFLAGS_OTHER:INTERNAL=-pthread;-pthread
+PC_CURL_STATIC_LIBDIR:INTERNAL=
+PC_CURL_STATIC_LIBRARIES:INTERNAL=curl;lber;ldap;lber;ssh2;ssl;crypto;crypto;z;brotlidec;brotlicommon;zstd;gssapi_krb5;krb5;k5crypto;com_err;krb5support;ssl;psl;ssh2;ssl;z;gpg-error;crypto;:libjitterentropy.a;zstd;dl;z;rtmp;z;gmp;gnutls;gmp;unistring;atomic;tasn1;idn2;unistring;p11-kit;hogweed;gmp;nettle;nghttp2
+PC_CURL_STATIC_LIBRARY_DIRS:INTERNAL=/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu/mit-krb5;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu
+PC_CURL_STATIC_LIBS:INTERNAL=
+PC_CURL_STATIC_LIBS_L:INTERNAL=
+PC_CURL_STATIC_LIBS_OTHER:INTERNAL=
+PC_CURL_STATIC_LIBS_PATHS:INTERNAL=
+PC_CURL_VERSION:INTERNAL=8.18.0
+PC_CURL_libcurl_INCLUDEDIR:INTERNAL=
+PC_CURL_libcurl_LIBDIR:INTERNAL=
+PC_CURL_libcurl_PREFIX:INTERNAL=
+PC_CURL_libcurl_VERSION:INTERNAL=
+//ADVANCED property for variable: PKG_CONFIG_ARGN
+PKG_CONFIG_ARGN-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
+PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
 //CMAKE_INSTALL_PREFIX during last run
 _GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=/usr/local
+__pkg_config_arguments_PC_CURL:INTERNAL=QUIET;libcurl
+__pkg_config_checked_PC_CURL:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_PC_CURL_curl
+pkgcfg_lib_PC_CURL_curl-ADVANCED:INTERNAL=1
+prefix_result:INTERNAL=alt-svc;AsynchDNS;brotli;GSS-API;HSTS;HTTP2;HTTPS-proxy;IDN;IPv6;Kerberos;Largefile;libz;NTLM;PSL;SPNEGO;SSL;threadsafe;TLS-SRP;UnixSockets;zstd
 

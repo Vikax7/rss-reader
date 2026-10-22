@@ -5,6 +5,8 @@ app_test: \
   CMakeFiles/app_test.dir/tests/app_test.cpp.o \
   librss_core.a \
   /usr/lib/gcc/x86_64-linux-gnu/15/../../../x86_64-linux-gnu/libpugixml.so \
+  /usr/lib/x86_64-linux-gnu/libcurl.so \
+  /usr/lib/x86_64-linux-gnu/libcurl.so \
   /usr/lib/gcc/x86_64-linux-gnu/15/libstdc++.so \
   /usr/lib/gcc/x86_64-linux-gnu/15/../../../x86_64-linux-gnu/libm.so \
   /usr/lib/gcc/x86_64-linux-gnu/15/../../../x86_64-linux-gnu/libm.so \
@@ -44,6 +46,10 @@ CMakeFiles/app_test.dir/tests/app_test.cpp.o:
 librss_core.a:
 
 /usr/lib/gcc/x86_64-linux-gnu/15/../../../x86_64-linux-gnu/libpugixml.so:
+
+/usr/lib/x86_64-linux-gnu/libcurl.so:
+
+/usr/lib/x86_64-linux-gnu/libcurl.so:
 
 /usr/lib/gcc/x86_64-linux-gnu/15/libstdc++.so:
 

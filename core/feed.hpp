@@ -15,7 +15,12 @@ namespace rss_reader::core {
 
         [[nodiscard]] const std::string& get_url() const noexcept;
         [[nodiscard]] const std::string& get_title() const noexcept;
+
+        //Константная версия — для обычного чтения статей (используется в тестах и при отрисовке)
         [[nodiscard]] const std::vector<Article>& get_articles() const noexcept;
+
+        //Неконстантная версия — для изменения статуса статей (is_read = true)
+        [[nodiscard]] std::vector<Article>& get_articles() noexcept;
 
         void set_url(const std::string& url);
 

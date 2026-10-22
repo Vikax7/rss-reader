@@ -44,6 +44,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
+  include("/home/viktoria/oop/rss-reader/build/_deps/ftxui-build/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
   include("/home/viktoria/oop/rss-reader/build/_deps/doctest-build/cmake_install.cmake")
 endif()
 

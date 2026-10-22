@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/viktoria/oop/rss-reader
+CXX_INCLUDES = -I/home/viktoria/oop/rss-reader -isystem /home/viktoria/oop/rss-reader/build/_deps/ftxui-src/include
 
 CXX_FLAGS = -std=gnu++20 -Wall -Wextra -Werror
 

@@ -97,6 +97,8 @@ app_test: CMakeFiles/app_test.dir/tests/app_test.cpp.o
 app_test: CMakeFiles/app_test.dir/build.make
 app_test: CMakeFiles/app_test.dir/compiler_depend.ts
 app_test: librss_core.a
+app_test: /usr/lib/x86_64-linux-gnu/libcurl.so
+app_test: /usr/lib/x86_64-linux-gnu/libcurl.so
 app_test: CMakeFiles/app_test.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/viktoria/oop/rss-reader/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable app_test"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/app_test.dir/link.txt --verbose=$(VERBOSE)

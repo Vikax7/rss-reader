@@ -5,6 +5,7 @@
 #include "core/feed_parser_factory.hpp"
 #include "core/rss_parser.hpp"
 #include "core/atom_parser.hpp"
+#include "core/html_renderer.hpp"
 
 TEST_CASE("Article structure cat be initialized") {
     rss_reader::core::Article article{
@@ -117,4 +118,50 @@ TEST_CASE("AtomParser successfully parses valid Atom 1.0 feed") {
     CHECK(feed.get_articles()[0].title == "First Atom Post");
     CHECK(feed.get_articles()[0].link == "https://example.com/posts/first-post");
     CHECK(feed.get_articles()[0].content == "This is the content of the first Atom post.");
+}
+
+TEST_CASE("HtmlRenderer basic text and paragraphs") {
+    std::string html = "<p>Hello, World!</p><div>Second block</div><br>New line test";
+    auto result = rss_reader::core::HtmlRenderer::render(html);
+
+    // Ожидаем, что теги заменятся на переносы строк, а текст сохранится
+    CHECK(result.text.find("Hello, World!") != std::string::npos);
+    CHECK(result.text.find("Second block") != std::string::npos);
+    CHECK(result.text.find("New line test") != std::string::npos);
+}
+
+TEST_CASE("HtmlRenderer links and footnotes generation") {
+    std::string html = "<p>Check <a href=\"https://example.com\">this link</a> out.</p>";
+    auto result = rss_reader::core::HtmlRenderer::render(html);
+
+    // Проверяем, что ссылка превратилась в текст со сноской [1]
+    CHECK(result.text.find("this link [1]") != std::string::npos);
+    
+    // Проверяем, что в структуре сохранился список сносок с правильным URL
+    REQUIRE(result.footnotes.size() == 1);
+    CHECK(result.footnotes[0] == "https://example.com");
+
+    // Проверяем, что в самом конце отрендеренного текста есть секция со списком ссылок
+    CHECK(result.text.find("[1] https://example.com") != std::string::npos);
+}
+
+TEST_CASE("HtmlRenderer list items and headers") {
+    std::string html = "<h1>Title</h1><ul><li>Item 1</li><li>Item 2</li></ul>";
+    auto result = rss_reader::core::HtmlRenderer::render(html);
+
+    CHECK(result.text.find("Title") != std::string::npos);
+    CHECK(result.text.find("  - Item 1") != std::string::npos);
+    CHECK(result.text.find("  - Item 2") != std::string::npos);
+}
+
+TEST_CASE("HtmlRenderer empty and invalid html resilience") {
+    // Пустой контент
+    auto res_empty = rss_reader::core::HtmlRenderer::render("");
+    CHECK(res_empty.text.empty());
+    CHECK(res_empty.footnotes.empty());
+
+    // Битый или неструктурированный текст
+    std::string raw = "Just plain text without tags";
+    auto res_plain = rss_reader::core::HtmlRenderer::render(raw);
+    CHECK(res_plain.text.find("Just plain text without tags") != std::string::npos);
 }

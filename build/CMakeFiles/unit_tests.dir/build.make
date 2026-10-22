@@ -97,6 +97,8 @@ unit_tests: CMakeFiles/unit_tests.dir/tests/core_test.cpp.o
 unit_tests: CMakeFiles/unit_tests.dir/build.make
 unit_tests: CMakeFiles/unit_tests.dir/compiler_depend.ts
 unit_tests: librss_core.a
+unit_tests: /usr/lib/x86_64-linux-gnu/libcurl.so
+unit_tests: /usr/lib/x86_64-linux-gnu/libcurl.so
 unit_tests: CMakeFiles/unit_tests.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/viktoria/oop/rss-reader/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable unit_tests"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/unit_tests.dir/link.txt --verbose=$(VERBOSE)

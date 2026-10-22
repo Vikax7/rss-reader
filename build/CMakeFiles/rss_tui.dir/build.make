@@ -97,6 +97,13 @@ rss_tui: CMakeFiles/rss_tui.dir/tui/main.cpp.o
 rss_tui: CMakeFiles/rss_tui.dir/build.make
 rss_tui: CMakeFiles/rss_tui.dir/compiler_depend.ts
 rss_tui: librss_core.a
+rss_tui: _deps/ftxui-build/libftxui-screen.a
+rss_tui: _deps/ftxui-build/libftxui-dom.a
+rss_tui: _deps/ftxui-build/libftxui-component.a
+rss_tui: /usr/lib/x86_64-linux-gnu/libcurl.so
+rss_tui: /usr/lib/x86_64-linux-gnu/libcurl.so
+rss_tui: _deps/ftxui-build/libftxui-dom.a
+rss_tui: _deps/ftxui-build/libftxui-screen.a
 rss_tui: CMakeFiles/rss_tui.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/viktoria/oop/rss-reader/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable rss_tui"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/rss_tui.dir/link.txt --verbose=$(VERBOSE)

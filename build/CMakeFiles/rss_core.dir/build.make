@@ -72,24 +72,10 @@ include CMakeFiles/rss_core.dir/flags.make
 CMakeFiles/rss_core.dir/codegen:
 .PHONY : CMakeFiles/rss_core.dir/codegen
 
-CMakeFiles/rss_core.dir/core/article.cpp.o: CMakeFiles/rss_core.dir/flags.make
-CMakeFiles/rss_core.dir/core/article.cpp.o: /home/viktoria/oop/rss-reader/core/article.cpp
-CMakeFiles/rss_core.dir/core/article.cpp.o: CMakeFiles/rss_core.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/viktoria/oop/rss-reader/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/rss_core.dir/core/article.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rss_core.dir/core/article.cpp.o -MF CMakeFiles/rss_core.dir/core/article.cpp.o.d -o CMakeFiles/rss_core.dir/core/article.cpp.o -c /home/viktoria/oop/rss-reader/core/article.cpp
-
-CMakeFiles/rss_core.dir/core/article.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/rss_core.dir/core/article.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/viktoria/oop/rss-reader/core/article.cpp > CMakeFiles/rss_core.dir/core/article.cpp.i
-
-CMakeFiles/rss_core.dir/core/article.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/rss_core.dir/core/article.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/viktoria/oop/rss-reader/core/article.cpp -o CMakeFiles/rss_core.dir/core/article.cpp.s
-
 CMakeFiles/rss_core.dir/core/feed.cpp.o: CMakeFiles/rss_core.dir/flags.make
 CMakeFiles/rss_core.dir/core/feed.cpp.o: /home/viktoria/oop/rss-reader/core/feed.cpp
 CMakeFiles/rss_core.dir/core/feed.cpp.o: CMakeFiles/rss_core.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/viktoria/oop/rss-reader/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/rss_core.dir/core/feed.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/viktoria/oop/rss-reader/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/rss_core.dir/core/feed.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rss_core.dir/core/feed.cpp.o -MF CMakeFiles/rss_core.dir/core/feed.cpp.o.d -o CMakeFiles/rss_core.dir/core/feed.cpp.o -c /home/viktoria/oop/rss-reader/core/feed.cpp
 
 CMakeFiles/rss_core.dir/core/feed.cpp.i: cmake_force
@@ -102,17 +88,15 @@ CMakeFiles/rss_core.dir/core/feed.cpp.s: cmake_force
 
 # Object files for target rss_core
 rss_core_OBJECTS = \
-"CMakeFiles/rss_core.dir/core/article.cpp.o" \
 "CMakeFiles/rss_core.dir/core/feed.cpp.o"
 
 # External object files for target rss_core
 rss_core_EXTERNAL_OBJECTS =
 
-librss_core.a: CMakeFiles/rss_core.dir/core/article.cpp.o
 librss_core.a: CMakeFiles/rss_core.dir/core/feed.cpp.o
 librss_core.a: CMakeFiles/rss_core.dir/build.make
 librss_core.a: CMakeFiles/rss_core.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/viktoria/oop/rss-reader/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library librss_core.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/viktoria/oop/rss-reader/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library librss_core.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/rss_core.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/rss_core.dir/link.txt --verbose=$(VERBOSE)
 

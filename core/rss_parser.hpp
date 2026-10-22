@@ -28,7 +28,9 @@ namespace rss_reader::core {
                 Article article;
                 article.title = item_node.child_value("title");
                 article.link = item_node.child_value("link");
-                article.content = item_node.child_value("description");
+                // Полный текст статьи имеет приоритет над кратким описанием.
+                article.content = item_node.child_value("content:encoded");
+                if (article.content.empty()) article.content = item_node.child_value("description");
 
                 feed.add_article(article);
             }
